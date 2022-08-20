@@ -23,9 +23,11 @@ $data = [
 
 $url = 'https://api.telegram.org/bot123123123:ABCDEF_ABCDEF_ABCDEF/sendMessage';
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, count($data));
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt_array($ch, [
+    CURLOPT_URL => $url,
+    CURLOPT_POST => count($data),
+    CURLOPT_POSTFIELDS => $data,
+    CURLOPT_RETURNTRANSFER => true
+]);
 curl_exec($ch);
 curl_close($ch);
