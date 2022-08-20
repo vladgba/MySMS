@@ -100,12 +100,11 @@ public class SmsListener extends BroadcastReceiver {
     }
 
     public String getAllMsg() {
-        JSONArray a = getRawMsg();
-        return a.toString();
+        return getPrefs().getString("sms", "[]");
     }
 
     public JSONArray getRawMsg() {
-        String json = getPrefs().getString("sms", "[]");
+        String json = getAllMsg();
         try {
             return new JSONArray(json);
         } catch (JSONException e) {
